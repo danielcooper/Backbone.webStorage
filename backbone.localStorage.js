@@ -16,7 +16,7 @@
       return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
   };
 
-  Backbone.Store = function (name,type) {
+  Backbone.Storage = function (name,type) {
       type = type || "local";
       this.name = name;
       this.type = type + "Storage";
@@ -24,7 +24,7 @@
       this.records = (store && store.split(",")) || [];
   }
 
-  _.extend(Backbone.Store.prototype, {
+  _.extend(Backbone.Storage.prototype, {
 
       // Save the current state of the **Store** to *localStorage*.
       save: function() {
