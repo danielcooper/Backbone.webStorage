@@ -74,9 +74,11 @@
 
   });
 
+  var normalSync = Backbone.sync;
 
   // Override `Backbone.sync` to use delegate to the model or collection's
   // *localStorage* property, which should be an instance of `Store`.
+  // If there is no storage found, use the normal Backbone.sync
   Backbone.sync = function(method, model, options, error) {
 
     // Backwards compatibility with Backbone <= 0.3.3
@@ -94,7 +96,7 @@
         store = model.collection.localStorage || model.collection.sessionStorage;
       }
       if (!store) {
-        return error("No storage found");
+        return normalSync.apply(this, _.toArray(arguments));
       }
 
       switch (method) {
