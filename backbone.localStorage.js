@@ -18,6 +18,11 @@
 
   Backbone.Storage = function (name,type) {
       type = type || "local";
+
+      if ( type != "local" || type != "session" )  {
+          type = "local";
+      }
+
       this.name = name;
       this.type = type + "Storage";
       var store = window[this.type].getItem(this.name);
