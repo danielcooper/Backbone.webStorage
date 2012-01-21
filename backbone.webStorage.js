@@ -116,7 +116,7 @@
       }
   };
 
-  BackBone.ajaxSync = BackBone.sync;
-  BackBone.sync = BackBone.webSync;
+  Backbone.ajaxSync = Backbone.sync;
+  Backbone.sync = Backbone.webSync;
 
 })(_, Backbone);
