@@ -79,12 +79,10 @@
 
   });
 
-  var normalSync = Backbone.sync;
-
   // Override `Backbone.sync` to use delegate to the model or collection's
   // *localStorage* property, which should be an instance of `Store`.
   // If there is no storage found, use the normal Backbone.sync
-  Backbone.sync = function(method, model, options, error) {
+  Backbone.webSync = function(method, model, options, error) {
 
     // Backwards compatibility with Backbone <= 0.3.3
     if (typeof options == 'function') {
@@ -117,5 +115,8 @@
         options.error("Record not found");
       }
   };
+
+  BackBone.ajaxSync = BackBone.sync;
+  BackBone.sync = BackBone.webSync;
 
 })(_, Backbone);
