@@ -19,7 +19,7 @@
   Backbone.Storage = function (name,type) {
       type = type || "local";
 
-      if ( type != "local" || type != "session" )  {
+      if ( type != "local" && type != "session" )  {
           type = "local";
       }
 
